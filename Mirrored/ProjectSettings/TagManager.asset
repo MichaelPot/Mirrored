@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Mirror
-  - Bullet
   - MeleeEnemy
+  - Bullet
+  - Mirror
   - PlayerWeapon
   layers:
   - Default
@@ -17,10 +17,10 @@ TagManager:
   - UI
   - 
   - 
-  - PostProcessing
-  - Mirror
-  - EnemyRange
   - Bullet
+  - Mirror
+  - 
+  - 
   - 
   - 
   - 

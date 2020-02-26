@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour {
         pitch = speedV * Input.GetAxis("Mouse Y");
 
         transform.eulerAngles += new Vector3(-pitch, yaw, 0f);
-
+        
         if (Input.GetButton("Jump") && !moving)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

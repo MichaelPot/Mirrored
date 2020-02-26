@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour {
     public GameObject b;
     GameObject MeleeEnemy;
 
-    float moveSpeed = 2;
+    float moveSpeed = 110f;
 
 	// Use this for initialization
 	void Start ()
@@ -22,9 +22,9 @@ public class Bullet : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
     {
-        transform.position = Vector3.MoveTowards(transform.position, dir, moveSpeed);//* Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, dir, moveSpeed * Time.deltaTime);
         //Destroy(this, 1);
     }
 
@@ -34,24 +34,27 @@ public class Bullet : MonoBehaviour {
 
         if (collision.gameObject.tag == "MeleeEnemy" /*&& collision.gameObject.layer != 10*/)
         {
+            Debug.Log("BEFORE");
             //Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
 
             MeleeEnemyHealth meleeHealth = collision.collider.GetComponentInParent<MeleeEnemyHealth>();
+            Debug.Log(meleeHealth);
             if (meleeHealth != null)
             {
                 meleeHealth.TakeDamage(100);
+                Debug.Log("POOP");
             }
             //collision.gameObject.GetComponent<MeleeEnemyController>().health = 0;
             //Destroy(MeleeEnemy);
             //MeleeEnemy.GetComponent<MeleeEnemyController>().health = 0;
         }
 
-        Destroy(gameObject);
+        Destroy(gameObject, .01f);
     }
 
-    public void EnemyTakeDamage(int amount)
+    /*public void EnemyTakeDamage(int amount)
     {
 
     }
-
+    */
 }

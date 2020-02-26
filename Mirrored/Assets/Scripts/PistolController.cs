@@ -25,7 +25,7 @@ public class PistolController : MonoBehaviour {
 	void Update ()
     {
         timer += Time.deltaTime;
-
+        
         if (Input.GetMouseButtonDown(0) && timer >= fireRate)
         {
             Shoot();
