@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PistolController : MonoBehaviour {
 
@@ -8,6 +9,10 @@ public class PistolController : MonoBehaviour {
     public float yaw = 0f, pitch = 0f;
     public float fireRate;
     public GameObject Bullet;
+
+    public int maxAmmo;
+    public int ammo;
+    public TextMeshProUGUI ammoDisplay;
 
     public Transform gunEnd;
 
@@ -25,9 +30,11 @@ public class PistolController : MonoBehaviour {
 	void Update ()
     {
         timer += Time.deltaTime;
-        
-        if (Input.GetMouseButtonDown(0) && timer >= fireRate)
+        ammoDisplay.text = "Ammo: " + ammo.ToString() + "/" + maxAmmo.ToString();
+
+        if (Input.GetMouseButtonDown(0) && timer >= fireRate && ammo > 0 && !GetComponentInParent<PlayerController>().IsMoving())
         {
+            ammo--;
             Shoot();
         }
     }

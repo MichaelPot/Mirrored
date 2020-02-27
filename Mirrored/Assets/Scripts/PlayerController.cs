@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour {
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward/*ray*/, 
                 out hit, 1000, mirrorMask)) 
             {
-                if (hit.collider.gameObject.tag == "Mirror")
+                if (hit.collider.CompareTag("Mirror"))//hit.collider.gameObject.tag == ("Mirror"))
                 {
                     if (hit.transform.position + hit.transform.forward != mirrorLoc)
                     {
@@ -76,20 +76,20 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(1))
         {
-            makeMirror();
+            MakeMirror();
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Mirror")
+        if (collision.collider.CompareTag("Mirror"))//collision.gameObject.tag == "Mirror")
         {
             moving = false;
             transform.position = mirrorLoc;//collision.transform.position;
         }
     }
 
-    private void makeMirror()
+    private void MakeMirror()
     {
         RaycastHit hit;
 
@@ -97,5 +97,10 @@ public class PlayerController : MonoBehaviour {
         {
             GameObject m = GameObject.Instantiate(Mirror, hit.point, hit.transform.rotation);
         }
+    }
+
+    public bool IsMoving()
+    {
+        return moving;
     }
 }

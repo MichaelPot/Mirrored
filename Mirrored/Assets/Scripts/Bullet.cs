@@ -30,19 +30,16 @@ public class Bullet : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        //Destroy(gameObject);
-
-        if (collision.gameObject.tag == "MeleeEnemy" /*&& collision.gameObject.layer != 10*/)
+        if (collision.collider.CompareTag("MeleeEnemy"))
         {
-            Debug.Log("BEFORE");
             //Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
 
             MeleeEnemyHealth meleeHealth = collision.collider.GetComponentInParent<MeleeEnemyHealth>();
-            Debug.Log(meleeHealth);
+            
             if (meleeHealth != null)
             {
                 meleeHealth.TakeDamage(100);
-                Debug.Log("POOP");
+                
             }
             //collision.gameObject.GetComponent<MeleeEnemyController>().health = 0;
             //Destroy(MeleeEnemy);

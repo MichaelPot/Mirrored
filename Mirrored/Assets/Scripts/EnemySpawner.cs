@@ -9,12 +9,20 @@ public class EnemySpawner : MonoBehaviour {
     int count = 0;
     bool firstWave = false, secondWave = false;
 	// Use this for initialization
-	void Start () {
-		
-	}
+	void Start () 
+    {
+        /* spawns enemies at start of level */
+        GameObject.Instantiate(MeleeEnemy, new Vector3(-6.3f, 0, 32.7f), Quaternion.Euler(0, 180, 0), gameObject.transform);
+        GameObject.Instantiate(MeleeEnemy, new Vector3(0, 0, -56.5f), Quaternion.Euler(0, 0, 0), gameObject.transform);
+        GameObject.Instantiate(MeleeEnemy, new Vector3(-36, 0, 32), Quaternion.Euler(0, 125, 0), gameObject.transform);
+        GameObject.Instantiate(MeleeEnemy, new Vector3(-36, 0, -34), Quaternion.Euler(0, 45, 0), gameObject.transform);
+        GameObject.Instantiate(MeleeEnemy, new Vector3(36.8f, 0, -1f), Quaternion.Euler(0, -90, 0), gameObject.transform);
+        GameObject.Instantiate(MeleeEnemy, new Vector3(27.4f, 0, -24f), Quaternion.Euler(0, -20, 0), gameObject.transform);
+    }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
 		if (firstWave == false && count >= 3)
         {
             firstWave = true;
@@ -33,6 +41,7 @@ public class EnemySpawner : MonoBehaviour {
         }
     }
 
+    /* used to keep track of how many enemies have been killed to spawn the next wave */
     public void SetCount()
     {
         count++;

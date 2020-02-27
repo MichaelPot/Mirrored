@@ -8,6 +8,9 @@ TagManager:
   - Bullet
   - Mirror
   - PlayerWeapon
+  - UI
+  - Manager
+  - Bat
   layers:
   - Default
   - TransparentFX

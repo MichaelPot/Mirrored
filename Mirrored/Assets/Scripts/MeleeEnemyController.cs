@@ -7,7 +7,7 @@ public class MeleeEnemyController : MonoBehaviour {
 
     //public GameObject player, playerWeapon;
 
-    GameObject player, playerWeapon;
+    GameObject player, playerWeapon, bat;
     //Transform player;
     GameObject playerObj;
     Animator anim;
@@ -20,22 +20,20 @@ public class MeleeEnemyController : MonoBehaviour {
 
     void Start () {
 
-
-        player = GameObject.FindGameObjectWithTag("Player");//.transform;
+        player = GameObject.FindGameObjectWithTag("Player");
         playerWeapon = GameObject.FindGameObjectWithTag("PlayerWeapon");
         playerObj = GameObject.FindGameObjectWithTag("Player");
+        bat = GameObject.FindGameObjectWithTag("Bat");
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         anim.SetBool("run", true);
         anim.SetBool("inRange", false);
         nav.isStopped = true;
-        //nav.isStopped = false;
     }
 	
 	void Update () {
-        //nav.isStopped = true;
         timer += Time.deltaTime;
-        nav.SetDestination(new Vector3(player.transform.position.x/*.transform.position.x*/, 0, player.transform.position.z/*.transform.position.z*/));
+        nav.SetDestination(new Vector3(player.transform.position.x, 0, player.transform.position.z));
         anim.SetBool("run", true);
         //  Debug.Log(health);
         if (active)
@@ -48,6 +46,7 @@ public class MeleeEnemyController : MonoBehaviour {
         }
         //  Debug.Log(health);
 
+        /* Determines when the enemies should start going after the player */
         if (playerWeapon.GetComponent<PistolController>().GetHasShot())
         {
             nav.isStopped = false;
@@ -57,7 +56,7 @@ public class MeleeEnemyController : MonoBehaviour {
         if (playerInRange)
         {
             nav.isStopped = true;
-            if (timer >= .8)//anim.GetCurrentAnimatorStateInfo(0).normalizedTime == 1)
+            if (anim.GetBool("inRange") && timer >= .8)//anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
             {
                 player.GetComponent<PlayerController>().health -= 100;
                 Debug.Log(anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
@@ -93,6 +92,7 @@ public class MeleeEnemyController : MonoBehaviour {
 
     private void OnDestroy()
     {
+        timer = 0;
         GetComponentInParent<EnemySpawner>().SetCount();
     }
 }
