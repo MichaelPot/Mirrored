@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class MeleeEnemyController : MonoBehaviour {
 
     //public GameObject player, playerWeapon;
+    public GameObject center;
 
     GameObject player, playerWeapon, bat;
     //Transform player;
@@ -17,9 +18,9 @@ public class MeleeEnemyController : MonoBehaviour {
     bool playerInRange = false;
     float timer;
     bool active = false;
-
+    int playerLayer;
     void Start () {
-
+        playerLayer = LayerMask.GetMask("Player");
         player = GameObject.FindGameObjectWithTag("Player");
         playerWeapon = GameObject.FindGameObjectWithTag("PlayerWeapon");
         playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -53,7 +54,7 @@ public class MeleeEnemyController : MonoBehaviour {
             active = true;
         }
 
-        if (playerInRange)
+        if (playerInRange && Physics.Raycast(center.transform.position, transform.forward, 1000, playerLayer))
         {
             nav.isStopped = true;
             if (anim.GetBool("inRange") && timer >= .8)//anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
@@ -71,7 +72,7 @@ public class MeleeEnemyController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == player)
+        if (other.gameObject == player && active)
         {
             playerInRange = true;
             //nav.isStopped = true;
@@ -82,7 +83,7 @@ public class MeleeEnemyController : MonoBehaviour {
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == player)
+        if (other.gameObject == player && active)
         {
             playerInRange = false;
             nav.isStopped = false;
