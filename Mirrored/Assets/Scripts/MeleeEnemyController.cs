@@ -11,14 +11,16 @@ public class MeleeEnemyController : MonoBehaviour {
     GameObject player, playerWeapon, bat;
     //Transform player;
     GameObject playerObj;
+    MirrorCont currMirror = null;
     Animator anim;
     //Animation animation;
     NavMeshAgent nav;
     Vector3 playerPos;
     bool playerInRange = false;
     float timer;
-    bool active = false;
+    bool active = false, isMirror = false;
     int playerLayer;
+
     void Start () {
         playerLayer = LayerMask.GetMask("Player");
         player = GameObject.FindGameObjectWithTag("Player");
@@ -48,17 +50,32 @@ public class MeleeEnemyController : MonoBehaviour {
         //  Debug.Log(health);
 
         /* Determines when the enemies should start going after the player */
-        if (playerWeapon.GetComponent<PistolController>().GetHasShot())
+        if (playerWeapon.GetComponent<PistolController>().GetHasShot() && !isMirror)
         {
             nav.isStopped = false;
             active = true;
         }
 
-        if (playerInRange && Physics.Raycast(center.transform.position, transform.forward, 1000, playerLayer))
+        RaycastHit hit;
+
+        if (playerInRange && Physics.Raycast(center.transform.position, transform.forward, out hit/*, playerLayer)*/) && !isMirror)
         {
-            nav.isStopped = true;
-            if (anim.GetBool("inRange") && timer >= .8)//anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+            //nav.isStopped = true;
+
+           /* if (player.GetComponent<PlayerController>().CurrMirror != null)
             {
+                currMirror = player.GetComponent<PlayerController>().CurrMirror.GetComponent<MirrorCont>();
+                if (currMirror != null && anim.GetBool("inRange") && timer >= .5)
+                {
+                    currMirror.BreakMirror();
+                    currMirror = null;
+                }
+            }
+            */
+
+            if (hit.collider.CompareTag("Player") && active && anim.GetBool("inRange") && timer >= .7)//anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+            {
+                nav.isStopped = true;
                 player.GetComponent<PlayerController>().health -= 100;
                 Debug.Log(anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
                 timer = 0;
@@ -72,12 +89,23 @@ public class MeleeEnemyController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == player && active)
+        if (other.gameObject == player)
         {
             playerInRange = true;
             //nav.isStopped = true;
             anim.SetBool("inRange", true);
             timer = 0;
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject == player)
+        {
+            playerInRange = true;
+            //nav.isStopped = true;
+            anim.SetBool("inRange", true);
+            //timer = 0;
         }
     }
 
@@ -94,6 +122,21 @@ public class MeleeEnemyController : MonoBehaviour {
     private void OnDestroy()
     {
         timer = 0;
-        GetComponentInParent<EnemySpawner>().SetCount();
+        
+    }
+
+    public void SetInactive()
+    {
+        active = false;
+        nav.isStopped = true;
+        isMirror = true;
+        this.enabled = false;
+    }
+    public void SetActive()
+    {
+        this.enabled = true;
+        active = true;
+        nav.isStopped = false;
+        isMirror = false;
     }
 }

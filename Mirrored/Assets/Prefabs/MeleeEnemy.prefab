@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4558472652542544}
   - component: {fileID: 136183596110903562}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Lower_Arm_L
   m_TagString: MeleeEnemy
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4358905047017380}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Armature
   m_TagString: MeleeEnemy
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4993880007032770}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Leg_Control_L
   m_TagString: MeleeEnemy
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4222905885044990}
   - component: {fileID: 136912192944354814}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Lower_Arm_R
   m_TagString: MeleeEnemy
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4735629529713870}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Foot_R
   m_TagString: MeleeEnemy
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4434424672682196}
   - component: {fileID: 136736937502754838}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Neck
   m_TagString: MeleeEnemy
   m_Icon: {fileID: 0}
@@ -351,7 +351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4700493058094820}
   - component: {fileID: 136611774258304504}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Torso
   m_TagString: MeleeEnemy
   m_Icon: {fileID: 0}
@@ -399,7 +399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4787406261725074}
   - component: {fileID: 136425678121589444}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Upper_Arm_L
   m_TagString: MeleeEnemy
   m_Icon: {fileID: 0}
@@ -445,7 +445,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4102621526103668}
   - component: {fileID: 136354149001689674}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Upper_Arm_R
   m_TagString: MeleeEnemy
   m_Icon: {fileID: 0}
@@ -490,7 +490,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4366331910249446}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Root
   m_TagString: MeleeEnemy
   m_Icon: {fileID: 0}
@@ -523,7 +523,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4187372801654092}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Leg_Control_R
   m_TagString: MeleeEnemy
   m_Icon: {fileID: 0}
@@ -555,7 +555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4477181012772220}
   - component: {fileID: 136654337038991362}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Upper_Leg_R
   m_TagString: MeleeEnemy
   m_Icon: {fileID: 0}
@@ -713,7 +713,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4103360592242050}
   - component: {fileID: 136346906855680874}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Toes_L
   m_TagString: MeleeEnemy
   m_Icon: {fileID: 0}
@@ -758,7 +758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4695715757279616}
   - component: {fileID: 136723276224067054}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Chest
   m_TagString: MeleeEnemy
   m_Icon: {fileID: 0}
@@ -810,7 +810,7 @@ GameObject:
   - component: {fileID: 114006113110660876}
   - component: {fileID: 114031725558606234}
   - component: {fileID: 195243884560898494}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: MeleeEnemy
   m_TagString: MeleeEnemy
   m_Icon: {fileID: 0}
@@ -906,7 +906,7 @@ NavMeshAgent:
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 250
-  m_StoppingDistance: 0
+  m_StoppingDistance: 6
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -924,7 +924,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4397158222365540}
   - component: {fileID: 136957240537780910}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Head
   m_TagString: MeleeEnemy
   m_Icon: {fileID: 0}
@@ -969,7 +969,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4277298782280132}
   - component: {fileID: 136582137450307436}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Lower_Leg_R
   m_TagString: MeleeEnemy
   m_Icon: {fileID: 0}
@@ -1014,7 +1014,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4968381798316536}
   - component: {fileID: 136876829144871986}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Toes_R
   m_TagString: MeleeEnemy
   m_Icon: {fileID: 0}
@@ -1058,7 +1058,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4998610216040758}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Foot_L
   m_TagString: MeleeEnemy
   m_Icon: {fileID: 0}
@@ -1090,7 +1090,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4589966076030430}
   - component: {fileID: 136020983538795968}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Lower_Leg_L
   m_TagString: MeleeEnemy
   m_Icon: {fileID: 0}
@@ -1135,7 +1135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4330023556002378}
   - component: {fileID: 136019992996796782}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Upper_Leg_L
   m_TagString: MeleeEnemy
   m_Icon: {fileID: 0}
@@ -1180,9 +1180,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1718489685491457287}
-  m_Layer: 2
+  m_Layer: 11
   m_Name: Center
-  m_TagString: Untagged
+  m_TagString: MeleeEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

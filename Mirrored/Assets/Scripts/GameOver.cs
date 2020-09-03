@@ -15,7 +15,7 @@ public class GameOver : MonoBehaviour
 
     Animator anim;
     float restartTimer;
-    bool isDead = false;
+    bool isDead = false, beaten = false;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -44,6 +44,10 @@ public class GameOver : MonoBehaviour
             {
                 deathMessage.text = "You're fucking trash";
             }
+            else if (deaths == 4 && !isDead)
+            {
+                deathMessage.text = "FUCK YOU";
+            }
             isDead = true;
         }
 
@@ -56,6 +60,10 @@ public class GameOver : MonoBehaviour
                 isDead = false;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
+        }
+        else if (beaten)
+        {
+
         }
     }
 }

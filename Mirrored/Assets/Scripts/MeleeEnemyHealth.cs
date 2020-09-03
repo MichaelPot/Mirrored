@@ -17,14 +17,15 @@ public class MeleeEnemyHealth : MonoBehaviour {
 
     public void TakeDamage(int amount)
     {
+       // Destroy(gameObject, .01f);
         if (health > 0)
         {
             health -= amount;
-        }
-
-        if (health <= 0)
-        {
-            Destroy(gameObject, .1f);
+            if (health <= 0)
+            {
+                GetComponentInParent<EnemySpawner>().SetCount();
+                Destroy(gameObject);
+            }
         }
     }
 }

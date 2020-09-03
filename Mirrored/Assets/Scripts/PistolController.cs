@@ -43,13 +43,14 @@ public class PistolController : MonoBehaviour {
         hasShot = true;
         timer = 0f;
 
-        GameObject b = GameObject.Instantiate(Bullet, gunEnd.position/*transform.position + transform.forward + Vector3.up*/, Quaternion.identity);
+        GameObject b = GameObject.Instantiate(Bullet, gunEnd.position /* transform.position + transform.forward + Vector3.up*/, Quaternion.identity);
         RaycastHit hit;
 
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit) && b != null)
         {
-            b.GetComponent<Bullet>().dir = hit.point;
+            //b.GetComponent<Bullet>().dir = hit.point; //+ new Vector3(0,0,0);
         }
+        //Time.timeScale = 0.1f;
     }
 
     public bool GetHasShot()
